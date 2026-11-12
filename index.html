@@ -1,119 +1,218 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>춘천 아이컴서비스 원격지원 다운로드</title><style>
-  body { font-family: "Malgun Gothic", sans-serif; margin:0; padding:0;
-         background:#eef3fa; color:#243041; }
-  .wrap { max-width:680px; margin:0 auto; padding:18px; }
-  .hero { background:linear-gradient(135deg,#2f6fed,#6ea0ff);
-          color:#fff; border-radius:0 0 18px 18px; padding:22px 20px;
-          box-shadow:0 4px 18px rgba(47,111,237,.18);
-          text-align:center; }
-  .hero h1 { margin:0; font-size:26px; letter-spacing:-1px; }
-  .hero p { margin:6px 0 0; font-size:14px; opacity:.92; }
-  .card { background:#fff; border-radius:16px; padding:22px 20px;
-          margin:18px 0; box-shadow:0 2px 10px rgba(30,50,90,.06); }
-  .step { display:flex; align-items:flex-start; gap:14px; margin:14px 0; }
-  .num  { flex:none; width:44px; height:44px; border-radius:50%;
-          background:#2f6fed; color:#fff; font-size:22px; font-weight:800;
-          display:flex; align-items:center; justify-content:center; }
-  .step b { font-size:17px; }
-  .step small { color:#5b6b82; display:block; margin-top:3px; line-height:1.5; }
-  .dl { display:block; text-align:center; background:#2f6fed; color:#fff;
-        text-decoration:none; font-size:21px; font-weight:800;
-        padding:20px 10px; border-radius:14px;
-        box-shadow:0 6px 16px rgba(47,111,237,.35); }
-  .dl small { display:block; font-size:12px; font-weight:400; opacity:.85;
-              margin-top:6px; }
-  .warn { background:#fff4f4; border:2px solid #ffb4b4; border-radius:12px;
-          padding:12px 14px; font-size:14px; line-height:1.6; }
-  .stophold { background:#fff9ec; border:2px solid #ffd89b; border-radius:12px;
-              padding:12px 14px; font-size:14px; line-height:1.6; }
-  .tel  { text-align:center; font-size:19px; font-weight:800;
-          color:#2f6fed; padding:10px 0 2px; }
-  .tel small { display:block; font-size:13px; font-weight:400;
-               color:#5b6b82; margin-top:2px; }
-  h2 { font-size:18px; margin:4px 0 10px; color:#243041; }
+<meta name="theme-color" content="#2f6fed">
+<meta name="description" content="춘천 아이컴서비스 원격지원 고객용 프로그램 다운로드">
+<title>춘천 아이컴서비스 원격지원 다운로드</title>
+<style>
+  :root {
+    --blue:#2f6fed; --blue-dark:#1d54c4; --ink:#233044;
+    --muted:#5d6b80; --line:#dbe5f4; --bg:#eef4fc;
+    --green:#12805c; --amber-bg:#fff8e8; --amber:#c47a00;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    line-height:1.6; word-break:keep-all;
+  }
+  .wrap { max-width:720px; margin:0 auto; padding:0 16px 42px; }
+  .hero {
+    margin:0 -16px 18px; padding:30px 22px 28px; text-align:center;
+    color:#fff; background:linear-gradient(135deg,#2f6fed 0%,#5b8df7 60%,#7aa6ff 100%);
+    border-radius:0 0 26px 26px; box-shadow:0 8px 28px rgba(47,111,237,.25);
+  }
+  .badge {
+    display:inline-block; font-size:11px; letter-spacing:.4px;
+    background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.36);
+    padding:3px 10px; border-radius:999px; margin-bottom:12px;
+  }
+  .hero h1 { margin:0; font-size:31px; line-height:1.25; letter-spacing:-1.2px; }
+  .hero p { margin:9px 0 0; font-size:15px; opacity:.95; }
+  .card {
+    background:#fff; border:1px solid rgba(219,229,244,.9);
+    border-radius:18px; padding:22px 20px; margin:16px 0;
+    box-shadow:0 3px 14px rgba(30,50,90,.06);
+  }
+  .card.soft { background:#fbfdff; }
+  h2 { margin:0 0 14px; font-size:20px; letter-spacing:-.5px; }
+  .dl {
+    display:block; text-align:center; text-decoration:none;
+    background:linear-gradient(180deg,#3b7bf5,#2f6fed); color:#fff;
+    font-size:22px; font-weight:800; letter-spacing:-.5px;
+    padding:19px 14px 17px; border-radius:15px;
+    box-shadow:0 8px 20px rgba(47,111,237,.32);
+    transition:transform .08s ease, box-shadow .08s ease;
+  }
+  .dl:active { transform:translateY(1px); box-shadow:0 4px 12px rgba(47,111,237,.28); }
+  .dl small { display:block; margin-top:7px; font-size:12.5px; font-weight:500; opacity:.92; }
+  .dl.secondary {
+    margin-top:10px; background:#fff; color:var(--blue);
+    border:2px solid #b9cff5; box-shadow:none; font-size:17px;
+  }
+  .hint { margin:12px 2px 0; color:var(--muted); font-size:14px; text-align:center; }
+  .warn {
+    margin-top:14px; padding:13px 15px; border-radius:13px;
+    background:var(--amber-bg); border:1.5px solid #ffd89b;
+    font-size:14px; line-height:1.65;
+  }
+  .warn b { color:#8a5200; }
+  details { margin-top:12px; }
+  summary {
+    cursor:pointer; color:var(--blue); font-weight:700; font-size:14.5px;
+    list-style:none;
+  }
+  summary::-webkit-details-marker { display:none; }
+  summary:before { content:"＋ "; font-weight:800; }
+  details[open] summary:before { content:"－ "; }
+  details p { margin:9px 0 0; color:#3d4c63; font-size:14px; line-height:1.7; }
+  .steps { margin-top:4px; }
+  .step { display:flex; gap:14px; align-items:flex-start; margin:16px 0; }
+  .num {
+    flex:none; width:42px; height:42px; border-radius:50%;
+    background:#e8f0ff; color:var(--blue); font-size:20px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step b { display:block; font-size:16.5px; letter-spacing:-.3px; }
+  .step small { display:block; margin-top:2px; color:var(--muted); font-size:13.5px; line-height:1.55; }
+  .note {
+    margin-top:16px; padding:12px 14px; border-radius:12px;
+    background:#eef7f3; border:1px solid #c9e8dc; color:#215c47; font-size:13.5px;
+  }
+  .faq details { border-top:1px solid var(--line); padding-top:11px; }
+  .faq details:first-child { border-top:0; padding-top:0; }
+  .hash {
+    margin:8px 0 6px; padding:11px 12px; border-radius:10px;
+    background:#f1f5fb; border:1px solid var(--line);
+    font-family:Consolas,monospace; font-size:12px; line-height:1.55;
+    color:#35445c; word-break:break-all;
+  }
+  .small { color:var(--muted); font-size:13px; }
+  .small a { color:var(--blue); }
+  .tel-card { text-align:center; }
+  .tel {
+    display:inline-block; color:var(--blue); text-decoration:none;
+    font-size:26px; font-weight:800; letter-spacing:-.6px;
+  }
+  .tel-card .small { margin:4px 0 0; }
+  .footer { margin-top:24px; text-align:center; color:#7b8798; font-size:12.5px; }
+  .footer details { margin:0 0 12px; text-align:left; background:#fff;
+    border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+  .footer p { margin:0; }
+  @media (max-width:520px) {
+    .hero h1 { font-size:27px; }
+    .dl { font-size:20px; padding:17px 12px 15px; }
+    .card { padding:19px 16px; border-radius:16px; }
+    .tel { font-size:24px; }
+  }
 </style>
 </head>
-<body><div class="wrap">
+<body>
+<div class="wrap">
+
   <div class="hero">
-    <h1>춘천 아이컴서비스 원격지원</h1>
-    <p>화면을 함께 보아 드리는 안전한 원격 지원 프로그램 · 최신 빌드 <b>[B20261111-V38]</b></p>
+    <div class="badge">B20261112-V39</div>
+    <h1>춘천 아이컴서비스<br>원격지원</h1>
+    <p>화면을 함께 보며 빠르게 도와드립니다</p>
   </div>
 
   <div class="card">
-    <h2>① 아래 큰 버튼을 눌러 파일을 받으세요</h2>
-    <a class="dl" href="아이컴 원격지원 고객용.exe?v=38" download>
-      ⬇ 클릭하여 다운로드
-      <small>아이컴 원격지원 고객용.exe</small>
+    <h2>① 고객용 프로그램 다운로드</h2>
+    <a class="dl" href="아이컴 원격지원 고객용.exe" download>
+      ⬇ 고객용 프로그램 다운로드
+      <small>아이컴 원격지원 고객용.exe · 약 21.8MB · Windows 10/11</small>
     </a>
-    <div style="margin-top:12px" class="warn">
-      ⚠️ 받은 파일을 열면 파란색 큰 알림("Windows가 PC 보호함")이 뜰 수 있어요.
-      두려워 말고 <b>[추가 정보]</b> → <b>[실행]</b> 순서로 눌러주세요.
-      이 프로그램은 아이컴서비스(010-7390-3507)가 직접 제공한 파일입니다.
+    <p class="hint">받은 파일을 두 번 누르면 바로 실행됩니다. <b>압축 풀기 없음.</b></p>
+    <div class="warn">
+      <b>다운로드가 막히면</b> 크롬 오른쪽의 <b>[유지] / [그래도 다운로드]</b>를 누르세요.<br>
+      <b>처음 실행할 때 딱 한 번만</b> 파란 "Windows가 PC 보호함" 창이 뜨면
+      <b>[추가 정보] → [실행]</b>을 누르세요. 이어서 나오는 설치 동의 창에서
+      <b>[동의하고 설치]</b>를 누르면 끝입니다.<br>
+      이후에는 바탕화면 아이콘으로 바로 실행되며 다시 묻지 않습니다.
     </div>
-    <div style="margin-top:12px" class="stophold">
-      🛡️ 다운로드를 눌렀는데 브라우저에서
-      <b>"위험할 수 있습니다" 경고</b>가 뜨면요:
-      <small style="display:block;margin-top:6px;line-height:1.7">
-        ① 노란[유지] / [그래도 다운로드] 버튼이 보이면 그것을 누르시고,
-        ② 보이지 않으면 화면 <b>우측 상단</b>의 작은 표시(⋯ 또는 표식) 클릭 →
-        <b>[유지] / [다운로드 유지]</b> 를 누르세요.
-        ③ 그래도 어려우면 <b>아래 zip 방식</b>을 눌러 받으세요.
-      </small>
-    </div>
-    <details style="margin-top:10px">
-      <summary style="cursor:pointer;color:#2f6fed;font-weight:700">
-        ↳ zip 파일로 받기 (경고가 자꾸 뜨는 분)
-      </summary>
-      <a style="display:block;margin-top:8px" class="dl"
-         href="아이컴원격지원.zip?v=38" download>
-        ⬇ zip으로 다운로드
-        <small>압축파일 — 풀어서 아이컴 원격지원 고객용.exe 실행</small>
+    <details>
+      <summary>브라우저가 EXE 다운로드를 끝까지 막을 때 (ZIP 대체)</summary>
+      <p>아래 ZIP을 받아 압축을 풀고 <b>시작하기.cmd</b>를 실행하세요. ZIP 파일을 우클릭 → [속성] → [차단 해제] 후 압축을 풀면 경고 없이 실행됩니다.</p>
+      <a class="dl secondary" href="아이컴원격지원.zip" download>
+        ⬇ ZIP으로 받기
+        <small>아이컴원격지원.zip · 약 21.6MB</small>
       </a>
     </details>
   </div>
 
   <div class="card">
-    <h2>② 받은 파일 한 번 눌러(더블클릭) 실행</h2>
-    <div class="step"><div class="num">1</div><div>
-      <b>실행하면 바로 "8자리 숫자" 입력 창이 열림</b>      <small>중간에 '바탕화면 바로가기 만들기'가 물어도 [예]를 누르세요.</small>
-    </div></div>
-    <div class="step"><div class="num">2</div><div>
-      <b>안내받은 8자리 숫자를 입력 → 연결</b>
-      <small>숫자는 전화 또는 문자로 받으세요.<br>
-      (다음에도 같은 숫자로 연결할 수 있습니다)</small>
-    </div></div>
-    <div class="step"><div class="num">3</div><div>
-      <b>연결되면 바로 지원이 시작됩니다</b>
-      <small>중간에 창이 뜨지 않아도 정상이며, 언제든 <b>[즉시 중지]</b>를 누르면 지원이 즉시 끊어집니다.</small>
-    </div></div>
-    <div class="step" style="margin-top:0"><div class="num">✓</div><div>
-      <b>최신 버전 확인 방법</b>
-      <small>프로그램 창 제목표시줄 끝에 <b>[B20261111-V38]</b> 같은 태그가 있으면 최신입니다.<br>
-      태그가 없거나 다르면 이전 버전 파일이 실행 중인 것입니다 — 이 페이지에서 다시 받아 실행해 주세요.</small>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <h2>③ 운영자(중개자)용 프로그램 — 아이컴서비스 내부용</h2>
-    <a class="dl" style="background:#4527a0;box-shadow:0 6px 16px rgba(69,39,160,.35)"
-       href="아이컴 원격지원 운영자.exe?v=38" download>
-      ⬇ 운영자 프로그램 다운로드
-      <small>아이컴 원격지원 운영자.exe — 실행 전 기존 운영자 프로그램을 완전히 끄고 새 파일로 실행</small>
-    </a>
-    <div style="margin-top:10px" class="warn" style="border-color:#d1b3ff">
-      ✅ 운영자 프로그램 상단에 <b>빌드 B20261111-V38</b> 표시가 보이면 최신입니다.<br>
-      표시가 없으면 예전 파일이 실행 중인 것 — 이 페이지에서 받은 새 파일로 실행해 주세요.
+    <h2>② 다운로드 후 바로 사용</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div>
+        <b>받은 EXE 파일 실행</b>
+        <small>다운로드 폴더에서 "아이컴 원격지원 고객용.exe"를 두 번 누르세요.</small>
+      </div></div>
+      <div class="step"><div class="num">2</div><div>
+        <b>설치 동의는 처음 한 번만</b>
+        <small>[동의하고 설치]를 누르면 바탕화면에 아이콘이 생깁니다. 다음부터는 그 아이콘으로 바로 실행됩니다.</small>
+      </div></div>
+      <div class="step"><div class="num">3</div><div>
+        <b>8자리 숫자 입력 → 연결</b>
+        <small>전화나 문자로 안내받은 숫자를 입력하면 바로 지원이 시작됩니다.</small>
+      </div></div>
+      <div class="step"><div class="num">4</div><div>
+        <b>지원 시작 · 종료는 [즉시 중지]</b>
+        <small>연결되면 별도 동의창 없이 바로 시작됩니다. 언제든 트레이의 [즉시 중지]로 끊을 수 있습니다.</small>
+      </div></div>
+    </div>
+    <div class="note">
+      복잡한 설치 파일을 따로 받을 필요가 없습니다.<br>
+      처음 한 번 [동의하고 설치]만 누르면, 다음부터는 바탕화면 아이콘으로 바로 연결됩니다.
     </div>
   </div>
 
-  <div class="card" style="text-align:center">
-    <h2>문제가 있으면 전화 주세요</h2>
-    <div class="tel">☎ 010-7390-3507
-      <small>아이컴서비스 · 언제든 연락 가능</small></div>
+  <div class="card soft">
+    <h2>경고가 떠도 당황하지 마세요</h2>
+    <div class="faq">
+      <details open>
+        <summary>크롬에서 "위험할 수 있습니다" 경고가 떠요</summary>
+        <p>오른쪽의 <b>[유지]</b> 또는 <b>[그래도 다운로드]</b>를 누르세요. 버튼이 안 보이면 주소창 오른쪽의 다운로드 표시(⬇)를 클릭한 뒤 <b>[유지]</b>를 누르면 됩니다.</p>
+      </details>
+      <details>
+        <summary>파란 "Windows가 PC 보호함" 창이 떠요</summary>
+        <p><b>[추가 정보]</b>를 누른 뒤 <b>[실행]</b>을 누르세요. 새 프로그램이라 평판이 쌓이기 전에 한 번 뜨는 창입니다. 실행 후 나오는 설치 동의 창에서 <b>[동의하고 설치]</b>를 누르면 다음부터는 뜨지 않습니다.</p>
+      </details>
+      <details>
+        <summary>설치 동의를 매번 물어보나요?</summary>
+        <p>아닙니다. <b>처음 한 번만</b> 물어봅니다. [동의하고 설치]를 누르면 바탕화면에 <b>아이컴 화면 지원</b> 아이콘이 생기고, 이후에는 그 아이콘으로 바로 실행됩니다. 설치를 원하지 않으면 [동의 안 함]을 누르면 프로그램이 종료됩니다.</p>
+      </details>
+      <details>
+        <summary>바이러스인가요?</summary>
+        <p>아닙니다. 아이컴서비스가 직접 만든 원격지원 프로그램입니다. 아래 <b>SHA256</b>으로 파일이 정품인지 확인할 수 있습니다. 의심되면 <b>010-7390-3507</b>로 전화해 확인하세요.</p>
+      </details>
+    </div>
   </div>
-</div></body></html>
+
+  <div class="card soft">
+    <h2>파일이 맞는지 확인</h2>
+    <p class="small">다운로드한 고객용 EXE의 SHA256이 아래와 같으면 정품입니다.</p>
+    <div class="hash">EC982D1B8296F084C3D9F7D5E2A6A7153E4F30A62C9F9355609E66FCA9154A99</div>
+    <p class="small"><a href="SHA256.txt" target="_blank" rel="noopener">SHA256.txt 열기</a> · 빌드 B20261112-V39</p>
+  </div>
+
+  <div class="card tel-card">
+    <h2>전화로 안내받기</h2>
+    <a class="tel" href="tel:01073903507">☎ 010-7390-3507</a>
+    <p class="small">아이컴서비스 · 언제든 연락 가능</p>
+  </div>
+
+  <div class="footer">
+    <details>
+      <summary>운영자용 프로그램</summary>
+      <p>고객에게 보내지 마세요. 운영자 PC에서만 사용합니다.</p>
+      <a class="dl secondary" href="아이컴 원격지원 운영자.exe" download>⬇ 운영자용 EXE 다운로드</a>
+    </details>
+    <p>아이컴서비스 · 춘천 · 010-7390-3507</p>
+  </div>
+
+</div>
+</body>
+</html>
