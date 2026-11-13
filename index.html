@@ -145,6 +145,13 @@
         <small>아이컴원격지원.zip · 약 21.6MB</small>
       </a>
     </details>
+    <details>
+      <summary>전화로 안내받은 분만 — 명령으로 받기 (경고 없음)</summary>
+      <p>아래 <b>[명령 복사]</b>를 누른 뒤, 키보드에서 <b>윈도우 키 + R</b> → <b>Ctrl+V</b> → <b>Enter</b>를 누르세요.
+      설치 동의 창이 뜨면 <b>[동의하고 설치]</b>를 한 번 누르면 끝입니다.</p>
+      <code id="installcmd" style="display:block;background:#0f172a;color:#e2e8f0;padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5;overflow-wrap:anywhere;margin:8px 0">powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe -OutFile $env:TEMP\icom.exe; &amp; $env:TEMP\icom.exe"</code>
+      <button class="dl secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('installcmd').textContent.trim()).then(function(){this.textContent='복사됨 ✓'}.bind(this)).catch(function(){this.textContent='복사 실패 — 명령을 직접 선택하세요'}.bind(this))">명령 복사</button>
+    </details>
   </div>
 
   <div class="card">
@@ -211,7 +218,7 @@
     <p class="small">다운로드한 EXE의 SHA256이 아래와 같으면 정품입니다.</p>
     <div class="hash">EC982D1B8296F084C3D9F7D5E2A6A7153E4F30A62C9F9355609E66FCA9154A99</div>
     <p class="small">ZIP으로 받았다면 ZIP의 SHA256</p>
-    <div class="hash">2FB7AFB454BBFE13CC4FC8C8BED5156AEDCEBFBA423764B1F1E967D497290B27</div>
+    <div class="hash">905424069F2D8737A8B7E3B1172C664DCA2601BBD681734298A4E3B02B503374</div>
     <p class="small"><a href="SHA256.txt" target="_blank" rel="noopener">SHA256.txt 열기</a> · 빌드 B20261113-V39</p>
   </div>
 
