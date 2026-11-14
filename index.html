@@ -231,9 +231,10 @@
     <b>3단계 안내 창</b>이 바로 뜹니다.<br>
     안내대로 <b>윈도우 키 + R</b> → <b>Ctrl+V</b> → <b>Enter</b>만 누르면 설치가 시작됩니다.</p>
 
-    <code id="installcmd" class="cmd">powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe -OutFile $env:TEMP\icom.exe; &amp; $env:TEMP\icom.exe"</code>
+    <code id="installcmd" class="cmd">cmd /c curl.exe -L --fail -sS -o "%LOCALAPPDATA%\icom-setup.exe" https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe &amp;&amp; "%LOCALAPPDATA%\icom-setup.exe"</code>
     <button class="dl safe" type="button" id="copyBtn" onclick="copyInstallCmd(this)">📋 명령 복사</button>
     <p class="hint">복사한 뒤 <b>Windows + R</b> → <b>Ctrl+V</b> → <b>Enter</b></p>
+    <p class="hint">보안 프로그램이 명령을 막으면 아래 <b>EXE / ZIP</b>을 사용하세요.</p>
 
     <div class="alt-dl">
       <p class="alt-title">또는 파일로 직접 받기</p>
@@ -294,6 +295,12 @@
       <details>
         <summary>명령 복사가 안 되면?</summary>
         <p>위의 <b>실행파일(EXE)</b> 또는 <b>압축파일(ZIP)</b>을 직접 받아 실행하세요. 이 경우 Windows SmartScreen 경고가 한 번 뜰 수 있습니다.</p>
+      </details>
+      <details>
+        <summary>디펜더·V3·알약이 막아요</summary>
+        <p>프로그램 파일 자체는 Windows Defender 정밀 검사에서 <b>바이러스로 탐지되지 않았습니다.</b>
+        다만 서명이 없어서 “인터넷에서 받아 바로 실행”하는 동작을 보안 프로그램이 막을 수 있습니다.</p>
+        <p><b>백신을 끄거나 예외 폴더를 만들지 마세요.</b> 위의 <b>실행파일(EXE)</b> 또는 <b>압축파일(ZIP)</b>로 받은 뒤 실행하거나, <b>010-7390-3507</b>로 전화 주세요.</p>
       </details>
       <details>
         <summary>설치 후 경고가 뜨나요?</summary>
