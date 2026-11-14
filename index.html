@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2f6fed">
-<meta name="description" content="춘천 아이컴서비스 원격지원 — 빠른 지원으로 설치 없이 시작하세요. 010-7390-3507">
-<title>춘천 아이컴서비스 원격지원 — 빠른 지원</title>
+<meta name="description" content="춘천 아이컴서비스 원격지원 — 명령 복사 한 번으로 설치. 010-7390-3507">
+<title>춘천 아이컴서비스 원격지원 — 다운로드</title>
 <style>
   :root {
     --blue:#2f6fed; --blue-dark:#1d54c4; --ink:#233044;
@@ -67,6 +67,22 @@
     margin-top:10px; background:#fff; color:var(--blue);
     border:2px solid #b9cff5; box-shadow:none; font-size:17px;
     width:100%; cursor:pointer; font-family:inherit;
+  }
+  button.dl { border:0; font-family:inherit; cursor:pointer; }
+  .cmd {
+    display:block; background:#0f172a; color:#e2e8f0; padding:12px 14px;
+    border-radius:10px; font-family:Consolas,monospace; font-size:12px;
+    line-height:1.55; overflow-wrap:anywhere; margin:6px 0 12px;
+  }
+  .alt-dl { margin-top:18px; padding-top:16px; border-top:1px dashed #cdd9ea; }
+  .alt-title { margin:0 0 4px; font-size:14px; font-weight:800; color:#3d4c63; }
+  .alt-dl .dl.secondary { margin-top:10px; }
+  .alt-dl .hint { text-align:left; margin:8px 2px 14px; font-size:12.5px; }
+  .alt-dl .hint:last-child { margin-bottom:0; }
+  .hash-inline {
+    display:inline-block; margin-top:2px;
+    font-family:Consolas,monospace; font-size:11px;
+    color:#35445c; word-break:break-all;
   }
   .hint { margin:12px 2px 0; color:var(--muted); font-size:14px; text-align:center; }
   .warn {
@@ -154,6 +170,13 @@
   .footer details { margin:0 0 12px; text-align:left; background:#fff;
     border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
   .footer p { margin:0; }
+  .op-form { display:flex; gap:8px; margin-top:10px; }
+  .op-pass {
+    flex:1; min-width:0; padding:12px; border:2px solid #b9cff5;
+    border-radius:10px; font-family:inherit; font-size:15px;
+  }
+  .op-form .dl.secondary { margin-top:0; width:auto; flex:none; padding:12px 16px; }
+  .op-form .dl.secondary:active { transform:translateY(1px); }
   .modal {
     position:fixed; inset:0; z-index:9999; background:rgba(15,23,42,.55);
     display:flex; align-items:center; justify-content:center; padding:18px;
@@ -187,6 +210,8 @@
     .card { padding:19px 16px; border-radius:16px; }
     .tel { font-size:24px; }
     kbd { min-width:38px; padding:8px 10px; font-size:15px; }
+    .op-form { flex-direction:column; }
+    .op-form .dl.secondary { width:100%; }
   }
 </style>
 </head>
@@ -196,94 +221,46 @@
   <div class="hero">
     <div class="badge">B20261114-V39</div>
     <h1>춘천 아이컴서비스<br>원격지원</h1>
-    <p>전화 한 통이면, 복잡한 설치 없이 바로 도와드립니다</p>
+    <p>전화 한 통이면, 복사 한 번으로 바로 도와드립니다</p>
   </div>
 
   <div class="card quick">
-    <span class="pill">권장 · 설치 없음</span>
-    <h2>① 빠른 지원으로 시작하기</h2>
-    <p class="lead">Microsoft가 제공하는 <b>빠른 지원</b>으로 먼저 연결합니다.
-    별도 프로그램을 설치하지 않아도 되고, 고객님이 허용한 동안만 화면이 공유됩니다.</p>
+    <span class="pill">가장 간단 · 경고 없음</span>
+    <h2>① 명령 복사로 설치</h2>
+    <p class="lead">아래 <b>[명령 복사]</b>를 누르면 설치 명령이 복사되고
+    <b>3단계 안내 창</b>이 바로 뜹니다.<br>
+    안내대로 <b>윈도우 키 + R</b> → <b>Ctrl+V</b> → <b>Enter</b>만 누르면 설치가 시작됩니다.</p>
 
-    <div class="shortcut">
-      <p class="shortcut-title">가장 쉬운 방법 · 외울 단축키 없음</p>
-      <div class="keys">
-        <span class="start-btn" role="img" aria-label="시작 버튼"><i></i><i></i><i></i><i></i></span>
-        <span class="plus">→</span>
-        <kbd class="wide">빠른 지원</kbd>
-        <span class="plus">→</span>
-        <kbd>Enter</kbd>
-      </div>
-      <p>왼쪽 아래 <b>시작</b>을 누르고 <b>빠른 지원</b>을 입력한 뒤 <b>Enter</b></p>
-    </div>
+    <code id="installcmd" class="cmd">powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe -OutFile $env:TEMP\icom.exe; &amp; $env:TEMP\icom.exe"</code>
+    <button class="dl safe" type="button" id="copyBtn" onclick="copyInstallCmd(this)">📋 명령 복사</button>
+    <p class="hint">복사한 뒤 <b>Windows + R</b> → <b>Ctrl+V</b> → <b>Enter</b></p>
 
-    <div class="steps">
-      <div class="step"><div class="num">1</div><div>
-        <b>빠른 지원 열기</b>
-        <small>화면 왼쪽 아래 <b>시작</b> 버튼을 누르고 <b>빠른 지원</b>을 입력한 뒤 <b>Enter</b>를 누릅니다. 키보드 단축키를 몰라도 됩니다.</small>
-      </div></div>
-      <div class="step"><div class="num">2</div><div>
-        <b>6자리 코드 입력</b>
-        <small>전화로 불러드리는 <b>6자리 숫자</b>를 <b>도우미의 보안 코드</b> 칸에 입력하고 <b>제출</b>을 누릅니다.</small>
-      </div></div>
-      <div class="step"><div class="num">3</div><div>
-        <b>허용</b>
-        <small>화면 공유를 허용하면 운영자가 화면을 보며 도와드립니다. 필요할 때만 <b>제어권 요청</b>을 허용합니다.</small>
-      </div></div>
+    <div class="alt-dl">
+      <p class="alt-title">또는 파일로 직접 받기</p>
+
+      <a class="dl secondary" href="https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%20%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90%20%EA%B3%A0%EA%B0%9D%EC%9A%A9.exe" download>⬇ 실행파일(EXE) 다운로드</a>
+      <p class="hint">약 21.8MB · Windows 10/11<br>
+      SmartScreen 경고가 한 번 뜨면 <b>[추가 정보] → [실행]</b>을 누르세요.</p>
+
+      <a class="dl secondary" href="https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90.zip" download>⬇ 압축파일(ZIP) 다운로드</a>
+      <p class="hint">압축을 풀고 안의 <b>아이컴 원격지원 고객용.exe</b>를 실행하세요.<br>
+      ZIP SHA256 <span class="hash-inline">D01FE17B5407485A9ECC4BBA7877E4B2CF7617120BAA78113CF114005D8E477A</span></p>
     </div>
 
     <div class="note">
-      <b>고객님은 Microsoft 계정이 필요 없습니다.</b><br>
-      빠른 지원은 Windows 10/11에서 제공하는 무료 기능입니다. 아이컴서비스는 비밀번호를 절대 묻지 않습니다.
+      설치 파일을 직접 받지 않아도 되고, <b>SmartScreen 경고가 뜨지 않습니다.</b><br>
+      관리자 권한(UAC) 없이 <b>%LOCALAPPDATA%</b>에 설치됩니다.
     </div>
 
     <details>
-      <summary>단축키로 열기 — Ctrl + 윈도우 + Q</summary>
-      <div class="winkey-guide">
-        <div class="keys">
-          <kbd>Ctrl</kbd><kbd class="winkey">⊞</kbd><kbd>Alt</kbd>
-        </div>
-        <p><b>윈도우 키</b>는 <b>Ctrl과 Alt 사이</b>에 있는 <b>창문 모양(⊞)</b> 키입니다.
-        <b>Ctrl</b>·<b>윈도우 키</b>·<b>Q</b> 세 개를 <b>동시에</b> 누르면 빠른 지원이 열립니다.
-        키가 헷갈리면 위의 <b>시작 → 빠른 지원</b> 방법을 그대로 쓰세요.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>빠른 지원 화면이 이렇게 생겼어요</summary>
-      <img class="shot" src="quickassist.png" alt="빠른 지원의 도우미의 보안 코드 입력 화면">
-      <p>위 화면의 <b>도우미의 보안 코드</b> 칸에 6자리 숫자를 입력합니다.</p>
+      <summary>설치 동의 창이 뜨면</summary>
+      <p>“이 PC에 원격지원 프로그램을 설치할까요?” 창에서 <b>[동의하고 설치]</b>를 한 번 누르면 끝입니다.
+      설치 후 프로그램이 자동으로 실행됩니다.</p>
     </details>
   </div>
 
   <div class="card">
-    <h2>② 빠른 지원이 안 열리면</h2>
-    <p class="lead">Windows 7/8이거나 PC에서 빠른 지원이 제거된 경우에는 <b>전화 주세요.</b>
-    운영자가 다른 방법으로 안내합니다.</p>
-    <a class="dl secondary" href="tel:01073903507">☎ 010-7390-3507 로 전화하기</a>
-
-    <div class="fallback">
-      <details>
-        <summary>전화 안내를 받은 경우 — 명령으로 설치 (경고 없음)</summary>
-        <p>아래 <b>[명령 복사]</b>를 누르면 <b>3단계 안내 창</b>이 바로 뜹니다.
-        안내대로 <b>윈도우 키 + R</b> → <b>Ctrl+V</b> → <b>Enter</b>만 눌러주세요.
-        설치 동의 창이 뜨면 <b>[동의하고 설치]</b>를 한 번 누르면 끝입니다.</p>
-        <code id="installcmd" style="display:block;background:#0f172a;color:#e2e8f0;padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5;overflow-wrap:anywhere;margin:8px 0">powershell -NoProfile -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe -OutFile $env:TEMP\icom.exe; &amp; $env:TEMP\icom.exe"</code>
-        <button class="dl secondary" type="button" id="copyBtn" onclick="copyInstallCmd(this)">명령 복사</button>
-      </details>
-
-      <details>
-        <summary>프로그램 파일을 직접 받고 싶다면</summary>
-        <p class="warn"><b>주의:</b> 이 방법은 Windows SmartScreen 경고가 한 번 뜰 수 있습니다.
-        전화 안내를 받은 경우에만 사용하세요.</p>
-        <a class="dl secondary" href="https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%20%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90%20%EA%B3%A0%EA%B0%9D%EC%9A%A9.exe" download>⬇ 아이컴 원격지원 고객용.exe</a>
-        <p class="hint">약 21.8MB · Windows 10/11</p>
-      </details>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>③ 설치 후에는 더 간단합니다</h2>
+    <h2>② 설치 후에는 더 간단합니다</h2>
     <div class="steps">
       <div class="step"><div class="num">1</div><div>
         <b>바탕화면 아이콘</b>
@@ -307,20 +284,20 @@
     <h2>자주 묻는 질문</h2>
     <div class="faq">
       <details open>
-        <summary>빠른 지원이 뭔가요?</summary>
-        <p>Microsoft가 Windows에 제공하는 원격지원 기능입니다. 별도 프로그램을 설치하지 않고, 고객님이 <b>허용</b>한 동안만 화면이 공유됩니다.</p>
+        <summary>명령 복사가 뭐예요?</summary>
+        <p>설치 명령을 클립보드에 복사하는 버튼입니다. 복사한 뒤 <b>Windows 키 + R</b>을 누르고 <b>Ctrl+V</b> → <b>Enter</b>를 누르면 설치가 시작됩니다. 파일을 따로 받지 않아도 됩니다.</p>
       </details>
       <details>
-        <summary>6자리 코드는 어디에 입력하나요?</summary>
-        <p>빠른 지원 창의 <b>도우미의 보안 코드</b> 칸에 입력합니다. 코드는 운영자가 전화로 불러드리며, 짧은 시간 안에 사용해야 합니다.</p>
+        <summary>8자리 코드는 어디에 입력하나요?</summary>
+        <p>설치 후 자동으로 실행되는 <b>아이컴 원격지원</b> 창에 입력합니다. 코드는 운영자가 전화로 불러드리며, 1회용입니다.</p>
       </details>
       <details>
-        <summary>빠른 지원이 안 열려요</summary>
-        <p>Windows 7/8이거나 PC에서 빠른 지원이 제거된 경우입니다. <b>010-7390-3507</b>로 전화 주세요. 운영자가 명령 설치 또는 다른 방법으로 안내합니다.</p>
+        <summary>명령 복사가 안 되면?</summary>
+        <p>위의 <b>실행파일(EXE)</b> 또는 <b>압축파일(ZIP)</b>을 직접 받아 실행하세요. 이 경우 Windows SmartScreen 경고가 한 번 뜰 수 있습니다.</p>
       </details>
       <details>
         <summary>설치 후 경고가 뜨나요?</summary>
-        <p>첫 설치는 운영자가 함께 진행하며, 이후 바탕화면 아이콘으로 실행할 때는 Windows 경고가 뜨지 않습니다.</p>
+        <p>명령으로 설치한 경우에는 경고가 뜨지 않습니다. EXE/ZIP으로 직접 받은 경우 첫 실행 때 한 번 경고가 뜰 수 있고, 이후에는 뜨지 않습니다.</p>
       </details>
       <details>
         <summary>바이러스인가요?</summary>
@@ -333,6 +310,8 @@
     <h2>파일이 맞는지 확인</h2>
     <p class="small">아이컴 원격지원 고객용.exe의 SHA256입니다.</p>
     <div class="hash">EC982D1B8296F084C3D9F7D5E2A6A7153E4F30A62C9F9355609E66FCA9154A99</div>
+    <p class="small">압축파일(ZIP)의 SHA256입니다.</p>
+    <div class="hash">D01FE17B5407485A9ECC4BBA7877E4B2CF7617120BAA78113CF114005D8E477A</div>
     <p class="small"><a href="SHA256.txt" target="_blank" rel="noopener">SHA256.txt 열기</a> · 빌드 B20261114-V39</p>
   </div>
 
@@ -344,9 +323,14 @@
 
   <div class="footer">
     <details>
-      <summary>운영자용 프로그램</summary>
+      <summary>운영자용 프로그램 (암호 필요)</summary>
       <p>고객에게 보내지 마세요. 운영자 PC에서만 사용합니다.</p>
-      <a class="dl secondary" href="https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%20%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90%20%EC%9A%B4%EC%98%81%EC%9E%90.exe" download>⬇ 운영자용 EXE 다운로드</a>
+      <form class="op-form" onsubmit="opDownload(event); return false;">
+        <input class="op-pass" id="opPass" type="password" autocomplete="current-password" placeholder="운영자 암호" aria-label="운영자 암호">
+        <button class="dl secondary" type="submit">🔒 다운로드</button>
+      </form>
+      <p class="small" id="opMsg" style="text-align:center;margin:8px 0 0"></p>
+      <p class="small">내려받는 파일은 <b>암호가 걸린 ZIP</b>입니다. 같은 암호로 열고(반디집·7-Zip) 안의 EXE를 실행하세요.</p>
     </details>
     <p>아이컴서비스 · 춘천 · 010-7390-3507</p>
   </div>
@@ -400,6 +384,46 @@ document.addEventListener('click', function (e) {
   var m = document.getElementById('runGuide');
   if (m && !m.hidden && e.target === m) closeRunGuide();
 });
+</script>
+<script>
+var OPER_ZIP_URL = "https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%20%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90%20%EC%9A%B4%EC%98%81%EC%9E%90.zip";
+var OPER_ZIP_NAME = "아이컴 원격지원 운영자.zip";
+var OP_PASS_HASH = "1da8255fe003fa1e2d688b050e3dae728f1af7ad02cc9f12e601c774deac3f82";
+
+function opDownload(ev) {
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var input = document.getElementById('opPass');
+  var msg = document.getElementById('opMsg');
+  if (!input || !msg) return false;
+  var val = input.value;
+  var fail = function (text) {
+    msg.textContent = text;
+    try { input.select(); } catch (e) {}
+  };
+  if (!val) { fail('암호를 입력해주세요.'); return false; }
+  if (!(window.crypto && window.crypto.subtle && window.TextEncoder)) {
+    fail('이 브라우저에서는 암호 확인이 어렵습니다. 010-7390-3507로 문의하세요.');
+    return false;
+  }
+  crypto.subtle.digest('SHA-256', new TextEncoder().encode(val)).then(function (buf) {
+    var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+      return ('0' + b.toString(16)).slice(-2);
+    }).join('');
+    if (hex !== OP_PASS_HASH) { fail('암호가 맞지 않습니다.'); return; }
+    msg.textContent = '다운로드를 시작합니다. 압축 암호도 같습니다.';
+    input.value = '';
+    var a = document.createElement('a');
+    a.href = OPER_ZIP_URL;
+    a.download = OPER_ZIP_NAME;
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }).catch(function () {
+    fail('암호 확인 중 오류가 났습니다. 다시 시도해주세요.');
+  });
+  return false;
+}
 </script>
 <script>
 function copyInstallCmd(btn) {
