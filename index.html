@@ -110,6 +110,25 @@
     font-family:inherit; font-size:16px; font-weight:800; color:#233044;
   }
   .shortcut p { margin:10px 0 0; color:#215c47; font-size:13.5px; }
+  .shortcut .shortcut-title {
+    margin:0 0 12px; color:#12805c; font-size:12.5px; font-weight:800;
+    letter-spacing:.2px;
+  }
+  .start-btn {
+    display:inline-grid; grid-template-columns:repeat(2,7px); grid-template-rows:repeat(2,7px);
+    gap:3px; place-content:center; width:44px; height:44px;
+    background:#fff; border:1px solid #b9c9dd; border-bottom-width:3px;
+    border-radius:8px; box-shadow:0 2px 0 rgba(30,50,90,.06);
+  }
+  .start-btn i { display:block; background:var(--blue); border-radius:1.5px; }
+  kbd.wide { min-width:0; font-size:15px; }
+  kbd.winkey {
+    color:var(--blue); border-color:#9dbcf3; background:#e8f0ff;
+    box-shadow:0 0 0 3px rgba(47,111,237,.14);
+  }
+  .winkey-guide { margin-top:8px; }
+  .winkey-guide .keys { margin:6px 0 2px; }
+  .winkey-guide p { margin:8px 0 0; color:#3d4c63; font-size:13.5px; line-height:1.65; }
   .shot {
     display:block; width:100%; max-width:420px; margin:10px auto 0;
     border:1px solid var(--line); border-radius:12px;
@@ -187,16 +206,21 @@
     별도 프로그램을 설치하지 않아도 되고, 고객님이 허용한 동안만 화면이 공유됩니다.</p>
 
     <div class="shortcut">
+      <p class="shortcut-title">가장 쉬운 방법 · 외울 단축키 없음</p>
       <div class="keys">
-        <kbd>Ctrl</kbd><span class="plus">+</span><kbd>Windows</kbd><span class="plus">+</span><kbd>Q</kbd>
+        <span class="start-btn" role="img" aria-label="시작 버튼"><i></i><i></i><i></i><i></i></span>
+        <span class="plus">→</span>
+        <kbd class="wide">빠른 지원</kbd>
+        <span class="plus">→</span>
+        <kbd>Enter</kbd>
       </div>
-      <p>키보드에서 세 키를 <b>동시에</b> 누르세요</p>
+      <p>왼쪽 아래 <b>시작</b>을 누르고 <b>빠른 지원</b>을 입력한 뒤 <b>Enter</b></p>
     </div>
 
     <div class="steps">
       <div class="step"><div class="num">1</div><div>
         <b>빠른 지원 열기</b>
-        <small><b>Ctrl + Windows + Q</b>를 누릅니다. 시작 메뉴에서 <b>빠른 지원</b>을 검색해도 됩니다.</small>
+        <small>화면 왼쪽 아래 <b>시작</b> 버튼을 누르고 <b>빠른 지원</b>을 입력한 뒤 <b>Enter</b>를 누릅니다. 키보드 단축키를 몰라도 됩니다.</small>
       </div></div>
       <div class="step"><div class="num">2</div><div>
         <b>6자리 코드 입력</b>
@@ -214,8 +238,15 @@
     </div>
 
     <details>
-      <summary>단축키가 안 되면 — 실행 창에서 열기</summary>
-      <p><b>Windows 키 + R</b>을 누르고 <b>quickassist</b>를 입력한 뒤 <b>Enter</b>를 누르세요.</p>
+      <summary>단축키로 열기 — Ctrl + 윈도우 + Q</summary>
+      <div class="winkey-guide">
+        <div class="keys">
+          <kbd>Ctrl</kbd><kbd class="winkey">⊞</kbd><kbd>Alt</kbd>
+        </div>
+        <p><b>윈도우 키</b>는 <b>Ctrl과 Alt 사이</b>에 있는 <b>창문 모양(⊞)</b> 키입니다.
+        <b>Ctrl</b>·<b>윈도우 키</b>·<b>Q</b> 세 개를 <b>동시에</b> 누르면 빠른 지원이 열립니다.
+        키가 헷갈리면 위의 <b>시작 → 빠른 지원</b> 방법을 그대로 쓰세요.</p>
+      </div>
     </details>
 
     <details>
