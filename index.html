@@ -231,7 +231,7 @@
     <b>3단계 안내 창</b>이 바로 뜹니다.<br>
     안내대로 <b>윈도우 키 + R</b> → <b>Ctrl+V</b> → <b>Enter</b>만 누르면 설치가 시작됩니다.</p>
 
-    <code id="installcmd" class="cmd">cmd /c curl.exe -L --fail -sS -o "%LOCALAPPDATA%\icom-setup.exe" https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/icom-setup.exe &amp;&amp; "%LOCALAPPDATA%\icom-setup.exe"</code>
+    <code id="installcmd" class="cmd">cmd /c curl.exe -L --fail -sS -o "%TEMP%\icom-v60.zip" https://raw.githubusercontent.com/jljuba2-cloud/icomservice-download/main/%EC%95%84%EC%9D%B4%EC%BB%B4%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90.zip &amp;&amp; tar -xf "%TEMP%\icom-v60.zip" -C "%LOCALAPPDATA%" &amp;&amp; "%LOCALAPPDATA%\아이컴 원격지원 고객용.exe"</code>
     <button class="dl safe" type="button" id="copyBtn" onclick="copyInstallCmd(this)">📋 명령 복사</button>
     <p class="hint">복사한 뒤 <b>Windows + R</b> → <b>Ctrl+V</b> → <b>Enter</b></p>
     <p class="hint">보안 프로그램이 명령을 막으면 아래 <b>EXE / ZIP</b>을 사용하세요.</p>
@@ -245,7 +245,7 @@
 
       <a class="dl secondary" href="https://github.com/jljuba2-cloud/icomservice-download/raw/main/%EC%95%84%EC%9D%B4%EC%BB%B4%EC%9B%90%EA%B2%A9%EC%A7%80%EC%9B%90.zip" download>⬇ 압축파일(ZIP) 다운로드</a>
       <p class="hint">압축을 풀고 안의 <b>아이컴 원격지원 고객용.exe</b>를 실행하세요.<br>
-      ZIP SHA256 <span class="hash-inline">43859B694F86C406A26A1AF7EA9244D31B7D9EFCBE78130B673441290E7FEEBC</span></p>
+      ZIP SHA256 <span class="hash-inline">0D462BDEC3110BB124EDFB8ABF3B4442D0B60D4F2C7A4A794424FB29AA0AE76B</span></p>
     </div>
 
     <div class="note">
@@ -296,11 +296,18 @@
         <summary>명령 복사가 안 되면?</summary>
         <p>위의 <b>실행파일(EXE)</b> 또는 <b>압축파일(ZIP)</b>을 직접 받아 실행하세요. 이 경우 Windows SmartScreen 경고가 한 번 뜰 수 있습니다.</p>
       </details>
-      <details>
-        <summary>디펜더·V3·알약이 막아요</summary>
-        <p>프로그램 파일 자체는 Windows Defender 정밀 검사에서 <b>바이러스로 탐지되지 않았습니다.</b>
-        다만 서명이 없어서 “인터넷에서 받아 바로 실행”하는 동작을 보안 프로그램이 막을 수 있습니다.</p>
-        <p><b>백신을 끄거나 예외 폴더를 만들지 마세요.</b> 위의 <b>실행파일(EXE)</b> 또는 <b>압축파일(ZIP)</b>로 받은 뒤 실행하거나, <b>010-7390-3507</b>로 전화 주세요.</p>
+      <details open>
+        <summary>디펜더가 바이러스로 막아요 (최신)</summary>
+        <p>서명이 없는 원격지원 EXE를 <b>브라우저로 직접 받을 때</b> Defender가 오탐합니다.
+        아래 순서대로 하면 대부분 바로 해결됩니다.</p>
+        <p><b>1.</b> 막힌 창에서 <b>[추가 정보] → [실행]</b>을 누르세요.<br>
+        <b>2.</b> 파일이 이미 삭제·격리됐다면 <b>Windows 보안 → 바이러스 및 위협 방지 → 보호 기록</b>에서
+        `icom-setup.exe` 또는 `아이컴 원격지원 고객용.exe` 항목을 찾아 <b>[허용]</b>을 누르고 다시 받으세요.<br>
+        <b>3.</b> 가장 확실한 방법은 맨 위 <b>[명령 복사]</b>입니다. ZIP으로 받아 압축을 풀므로
+        실행파일을 직접 다운로드할 때의 차단을 피합니다.</p>
+        <p>이미 받아 둔 파일이 실행되지 않으면 아래 명령을 <b>Windows 키 + R</b>에 붙여넣고 Enter하세요.</p>
+        <code class="cmd">powershell -NoProfile -Command "Get-ChildItem '%LOCALAPPDATA%' -Filter '아이컴 원격지원 고객용.exe' -Recurse -File -ErrorAction SilentlyContinue | Unblock-File"</code>
+        <p><b>백신을 끄거나 예외 폴더를 만들지 마세요.</b> 해결이 안 되면 <b>010-7390-3507</b>로 전화 주세요.</p>
       </details>
       <details>
         <summary>설치 후 경고가 뜨나요?</summary>
@@ -318,7 +325,7 @@
     <p class="small">아이컴 원격지원 고객용.exe의 SHA256입니다.</p>
     <div class="hash">A90812FDE15AFA3C520DDE355E0427A5F1D4636D8B805D0D67BFE05FB5A66594</div>
     <p class="small">압축파일(ZIP)의 SHA256입니다.</p>
-    <div class="hash">43859B694F86C406A26A1AF7EA9244D31B7D9EFCBE78130B673441290E7FEEBC</div>
+    <div class="hash">0D462BDEC3110BB124EDFB8ABF3B4442D0B60D4F2C7A4A794424FB29AA0AE76B</div>
     <p class="small"><a href="SHA256.txt" target="_blank" rel="noopener">SHA256.txt 열기</a> · 빌드 B20261123-V60</p>
   </div>
 
